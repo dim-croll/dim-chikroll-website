@@ -93,9 +93,18 @@ button:disabled{opacity:.4;cursor:not-allowed}
     <div class="logo">DIM CHIKROLL.</div>
     <div class="sub">POINT OF SALE</div>
   </div>
-  <div class="status" id="status">● ONLINE</div>
-</header>
 
+  <div style="text-align:right">
+    <div class="status" id="status">● ONLINE</div>
+    <div id="staff-info" style="font-size:12px;margin-top:6px">
+      OWNER001
+    </div>
+    <button onclick="logoutStaff()"
+      style="margin-top:6px;background:#F3A538;color:#101827">
+      LOGOUT
+    </button>
+  </div>
+</header>
 <main>
   <div class="layout">
     <section>
@@ -220,6 +229,10 @@ async function loginStaff() {
     if (error) throw error;
 
     currentStaff = result.staff;
+    document.getElementById("staff-info").textContent =
+  currentStaff.full_name + " | " +
+  currentStaff.staff_id + " | " +
+  currentStaff.role.toUpperCase();
 
     document.getElementById("login-screen").style.display = "none";
 
