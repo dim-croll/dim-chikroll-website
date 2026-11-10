@@ -189,5 +189,16 @@ window.addEventListener("online",updateStatus);
 window.addEventListener("offline",updateStatus);
 updateStatus();
 </script>
+  
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js")
+      .then(() => console.log("DIM CHIKROLL POS: Offline ready"))
+      .catch(error => console.error("Service Worker error:", error));
+  });
+}
+</script>
+
 </body>
 </html>
