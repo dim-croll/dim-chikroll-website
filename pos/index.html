@@ -1,12 +1,87 @@
+
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIM CHIKROLL POS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>DIM CHIKROLL POS</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101827;color:white;font-family:Arial,sans-serif}
+header{background:#17243a;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}
+.logo{color:#f3a538;font-size:21px;font-weight:900}
+.sub{font-size:11px;color:#aab4c3}
+.status{font-size:12px;color:#36d399}
+main{max-width:1100px;margin:auto;padding:22px}
+h2{font-size:20px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.product{background:#1c293a;border:1px solid #344156;border-radius:12px;padding:18px;text-align:center}
+.product .emoji{font-size:38px}
+.product h3{font-size:15px;margin:10px 0}
+.price{color:#f3a538;font-weight:bold}
+.cart{background:#1c293a;border:1px solid #344156;border-radius:14px;padding:20px;margin-top:25px}
+.total{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #46546a;padding-top:15px;margin-top:15px}
+.total strong{font-size:26px;color:#f3a538}
+button{border:0;border-radius:9px;padding:14px;background:#f3a538;color:#101827;font-weight:bold;cursor:pointer}
+footer{text-align:center;color:#8995a6;font-size:12px;padding:25px}
+</style>
 </head>
 <body>
-    <h1>DIM CHIKROLL POS</h1>
-    <p>Offline-First POS System</p>
+<header>
+  <div>
+    <div class="logo">DIM CHIKROLL.</div>
+    <div class="sub">POINT OF SALE</div>
+  </div>
+  <div class="status" id="status">● ONLINE</div>
+</header>
+
+<main>
+  <h2>Pilih Produk</h2>
+  <div class="products">
+    <div class="product">
+      <div class="emoji">🧄</div>
+      <h3>GARCHEE</h3>
+      <div class="price">RM12.00</div>
+    </div>
+    <div class="product">
+      <div class="emoji">🍖</div>
+      <h3>SMOKE BBQ</h3>
+      <div class="price">RM12.00</div>
+    </div>
+    <div class="product">
+      <div class="emoji">🌶️</div>
+      <h3>KOREAN SPICY</h3>
+      <div class="price">RM12.00</div>
+    </div>
+  </div>
+
+  <div class="cart">
+    <h2>Pesanan Semasa</h2>
+    <p class="sub">Cart akan dibangunkan dalam langkah seterusnya.</p>
+    <div class="total">
+      <span>JUMLAH</span>
+      <strong>RM0.00</strong>
+    </div>
+    <button disabled style="width:100%;opacity:.5;margin-top:15px">
+      CHECKOUT
+    </button>
+  </div>
+</main>
+
+<footer>DIM CHIKROLL POS · Version 1.0</footer>
+
+<script>
+function updateStatus(){
+  const online=navigator.onLine;
+  document.getElementById("status").textContent=
+    online?"● ONLINE":"● OFFLINE";
+  document.getElementById("status").style.color=
+    online?"#36d399":"#ff7373";
+}
+window.addEventListener("online",updateStatus);
+window.addEventListener("offline",updateStatus);
+updateStatus();
+</script>
 </body>
 </html>
