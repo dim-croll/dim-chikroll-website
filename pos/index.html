@@ -99,8 +99,15 @@ button:disabled{opacity:.4;cursor:not-allowed}
         <strong id="total">RM0.00</strong>
       </div>
       <button id="checkout" style="width:100%;margin-top:16px" disabled>
-        CHECKOUT
-      </button>
+  CHECKOUT
+</button>
+
+<div id="payment-section" hidden style="margin-top:16px">
+  <h3>KAEDAH PEMBAYARAN</h3>
+
+  <button onclick="selectPayment('cash')">CASH</button>
+  <button onclick="selectPayment('qr')">QR PAY</button>
+</div>
       <p class="notice">Harga asas RM12.00 setiap Chikroll.</p>
     </section>
   </div>
