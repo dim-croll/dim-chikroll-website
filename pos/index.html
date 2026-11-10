@@ -111,6 +111,13 @@ button:disabled{opacity:.4;cursor:not-allowed}
 </footer>
 
 <script>
+const SUPABASE_URL = "https://mpyobhdrphkmlbhxfvam.supabase.co";
+const SUPABASE_KEY = "sb_publishable_-YVWCgR2j4vBO5-nuOLElA_5NT5is4V";
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 const PRICE = 12;
 let cart = [];
 
