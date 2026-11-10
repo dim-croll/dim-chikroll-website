@@ -122,12 +122,48 @@ console.log("Supabase connected:", !!supabaseClient);
 const PRICE = 12;
 let cart = [];
 
-function openOptions(){
+async function openOptions(){
   document.getElementById("options").hidden = false;
+
+  const sauceSelect = document.getElementById("sauce");
+  const seasoningSelect = document.getElementById("seasoning");
+
+  sauceSelect.innerHTML = '<option value="">Loading...</option>';
+  seasoningSelect.innerHTML = '<option value="">Loading...</option>';
+
+  const { data, error } = await supabaseClient
+    .from("product_options")
+    .select("name, option_type")
+    .eq("is_active", true)
+    .order("name");
+
+  if(error){
+    alert("Gagal memuatkan pilihan: " + error.message);
+    return;
+  }
+
+  sauceSelect.innerHTML = "";
+  seasoningSelect.innerHTML = "";
+
+  data.forEach(option => {
+    const element = document.createElement("option");
+    element.value = option.name;
+    element.textContent = option.name;
+
+    if(option.option_type.toLowerCase() === "sauce"){
+      sauceSelect.appendChild(element);
+    }
+
+    if(option.option_type.toLowerCase() === "seasoning"){
+      seasoningSelect.appendChild(element);
+    }
+  });
 }
+
 function closeOptions(){
   document.getElementById("options").hidden = true;
 }
+
 function addToCart(){
   const sauce = document.getElementById("sauce").value;
   const seasoning = document.getElementById("seasoning").value;
